@@ -1,4 +1,4 @@
-import 'package:doti_app/home/home.dart';
+import 'package:doti_app/metered_waste/metered_waste.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const HomeScreen(),
+      child: const MeteredWaste(),
     );
   }
 }
