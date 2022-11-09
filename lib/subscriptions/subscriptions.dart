@@ -12,25 +12,27 @@ class Subscriptions extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            Text(
-              'Choose A Plan  that\nsuit you',
-              style: TextStyle(
-                  color: teal, fontSize: 16.sp, fontWeight: FontWeight.w500),
-            ),
-            SizedBox(
-              height: 7.h,
-            ),
-            const Text(
-              'We set out with a single mission,to create the easiest disposal service for our clients',
-              style: TextStyle(color: Color.fromRGBO(1, 55, 43, 1)),
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            _subCard(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Text(
+                'Choose A Plan  that\nsuit you',
+                style: TextStyle(
+                    color: teal, fontSize: 16.sp, fontWeight: FontWeight.w500),
+              ),
+              SizedBox(
+                height: 7.h,
+              ),
+              const Text(
+                'We set out with a single mission,to create the easiest disposal service for our clients',
+                style: TextStyle(color: Color.fromRGBO(1, 55, 43, 1)),
+              ),
+              SizedBox(
+                height: 20.h,
+              ),
+              _subCard(),
+            ],
+          ),
         ),
       ),
     );
