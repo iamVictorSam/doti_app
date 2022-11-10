@@ -13,79 +13,92 @@ class Profile extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              GestureDetector(
-                  onTap: () {},
-                  child: const CustomCard(
-                      child: Icon(Icons.arrow_back, color: kWhite))),
-              SizedBox(height: 15.h),
-              ListTile(
-                leading: CircleAvatar(radius: 30.r),
-                trailing: GestureDetector(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30.h),
+                GestureDetector(
                     onTap: () {},
-                    child: CustomCard(
-                        color: lightTeal,
-                        child: SvgPicture.asset('assets/icon/edit.svg'))),
-              ),
-              SizedBox(height: 10.h),
-              Text(
-                'Sam Victor',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp),
-              ),
-              Text(
-                '+2348089633542',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  profileCard(
-                      icon: 'assets/icon/support.svg', title: 'Support'),
-                  profileCard(icon: 'assets/icon/wallet.svg', title: 'Wallet'),
-                  profileCard(
-                      icon: 'assets/icon/settings.svg', title: 'Settings'),
-                ],
-              ),
-              SizedBox(height: 20.h),
-              ListTile(
-                leading: CustomCard(
-                  color: lightTeal,
-                  child:
-                      SvgPicture.asset('assets/icon/fluent_mail-20-filled.svg'),
+                    child: const CustomCard(
+                        child: Icon(Icons.arrow_back, color: kWhite))),
+                SizedBox(height: 15.h),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: CircleAvatar(radius: 30.r),
+                  trailing: GestureDetector(
+                      onTap: () {},
+                      child: CustomCard(
+                          color: lightTeal,
+                          child: SvgPicture.asset('assets/icon/edit.svg'))),
                 ),
-                title: const Text('iamvictorsam@gmail.com'),
-                trailing: CustomCard(
-                    child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: const Text(
-                    'Verify',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: kWhite,
-                    ),
+                SizedBox(height: 10.h),
+                Text(
+                  'Sam Victor',
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, fontSize: 25.sp),
+                ),
+                Text(
+                  '+2348089633542',
+                  style: TextStyle(fontSize: 14.sp),
+                ),
+                SizedBox(height: 15.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    profileCard(
+                        icon: 'assets/icon/support.svg', title: 'Support'),
+                    SizedBox(width: 25.w),
+                    profileCard(
+                        icon: 'assets/icon/wallet.svg', title: 'Wallet'),
+                    SizedBox(width: 25.w),
+                    profileCard(
+                        icon: 'assets/icon/settings.svg', title: 'Settings'),
+                  ],
+                ),
+                SizedBox(height: 20.h),
+                ListTile(
+                  leading: CustomCard(
+                    color: lightTeal,
+                    child: SvgPicture.asset(
+                        'assets/icon/fluent_mail-20-filled.svg'),
                   ),
-                )),
-              ),
-              titleCard(
-                  icon: 'assets/icon/ic_baseline-history-edu.svg',
-                  title: 'Pickup History'),
-              titleCard(
-                  icon: 'assets/icon/eos-icons_subscriptions-created.svg',
-                  title: 'Subscriptions'),
-              titleCard(
-                  icon: 'assets/icon/bxs_notification.svg',
-                  title: 'Notification'),
-              titleCard(
-                  icon: 'assets/icon/flat-color-icons_about.svg',
-                  title: 'About'),
-              titleCard(
-                  icon: 'assets/icon/bi_exclamation-circle-fill.svg',
-                  title: 'Legal'),
-              titleCard(
-                  icon: 'assets/icon/mdi_logout-variant.svg', title: 'Logout'),
-            ],
+                  title: Text(
+                    'iamvictorsam@gmail.com',
+                    style: TextStyle(fontSize: 13.sp, color: teal),
+                  ),
+                  trailing: CustomCard(
+                      child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: const Text(
+                      'Verify',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: kWhite,
+                      ),
+                    ),
+                  )),
+                ),
+                titleCard(
+                    icon: 'assets/icon/ic_baseline-history-edu.svg',
+                    title: 'Pickup History'),
+                titleCard(
+                    icon: 'assets/icon/eos-icons_subscriptions-created.svg',
+                    title: 'Subscriptions'),
+                titleCard(
+                    icon: 'assets/icon/bxs_notification.svg',
+                    title: 'Notification'),
+                titleCard(
+                    icon: 'assets/icon/flat-color-icons_about.svg',
+                    title: 'About'),
+                titleCard(
+                    icon: 'assets/icon/bi_exclamation-circle-fill.svg',
+                    title: 'Legal'),
+                titleCard(
+                    icon: 'assets/icon/mdi_logout-variant.svg',
+                    title: 'Logout'),
+              ],
+            ),
           ),
         ),
       ),
@@ -112,16 +125,23 @@ class Profile extends StatelessWidget {
         ),
       );
 
-  Widget profileCard({required String icon, title}) => CustomCard(
-        color: lightTeal,
-        child: Column(
-          children: [
-            SvgPicture.asset(icon),
-            Text(
-              title,
-              style: TextStyle(color: teal, fontSize: 16.sp),
-            )
-          ],
+  Widget profileCard({required String icon, title}) => Expanded(
+        child: SizedBox(
+          height: 65.h,
+          child: CustomCard(
+            color: lightTeal,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(icon),
+                SizedBox(height: 5.h),
+                Text(
+                  title,
+                  style: TextStyle(color: teal, fontSize: 14.sp),
+                )
+              ],
+            ),
+          ),
         ),
       );
 }

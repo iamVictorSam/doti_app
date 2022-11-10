@@ -29,9 +29,12 @@ class MeteredWaste extends StatelessWidget {
             child: Text(
               'Select waste quantity',
               style: TextStyle(
-                  color: teal, fontWeight: FontWeight.w500, fontSize: 16.sp),
+                  color: const Color.fromRGBO(0, 148, 115, 1),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.sp),
             ),
           ),
+          SizedBox(height: 10.h),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(
@@ -40,9 +43,10 @@ class MeteredWaste extends StatelessWidget {
                 Expanded(
                   child: Container(
                       decoration: BoxDecoration(
-                          border: Border.all(color: teal),
+                          border: Border.all(
+                              color: const Color.fromRGBO(0, 0, 0, 0.27)),
                           borderRadius: BorderRadius.circular(7),
-                          color: const Color.fromARGB(113, 0, 68, 53)),
+                          color: const Color.fromRGBO(0, 68, 53, 0.21)),
                       padding: const EdgeInsets.all(14),
                       child: Text('One bag',
                           style: TextStyle(
@@ -84,7 +88,9 @@ class MeteredWaste extends StatelessWidget {
             child: Text(
               'Price',
               style: TextStyle(
-                  color: teal, fontWeight: FontWeight.w500, fontSize: 16.sp),
+                  color: const Color.fromRGBO(4, 105, 85, 1),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 16.sp),
             ),
           ),
           SizedBox(
@@ -97,7 +103,7 @@ class MeteredWaste extends StatelessWidget {
               children: [
                 Text('Waste Bag',
                     style: TextStyle(
-                        color: lightTeal,
+                        color: const Color.fromRGBO(4, 105, 85, 0.74),
                         fontWeight: FontWeight.w500,
                         fontSize: 16.sp)),
                 Row(
@@ -105,7 +111,7 @@ class MeteredWaste extends StatelessWidget {
                     Text(
                       'N1,000',
                       style: TextStyle(
-                          color: teal,
+                          color: const Color.fromRGBO(4, 105, 85, 0.74),
                           fontWeight: FontWeight.w500,
                           fontSize: 16.sp),
                     ),
@@ -114,14 +120,17 @@ class MeteredWaste extends StatelessWidget {
                     ),
                     Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: teal),
+                            border: Border.all(
+                                color: const Color.fromRGBO(0, 0, 0, 0.27)),
                             borderRadius: BorderRadius.circular(7),
-                            color: const Color.fromARGB(227, 0, 68, 53)),
+                            color: const Color.fromRGBO(0, 68, 53, 0.21)),
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 5),
-                        child: const Text('1',
+                            horizontal: 20, vertical: 3),
+                        child: Text('1',
                             style: TextStyle(
-                                color: teal, fontWeight: FontWeight.w500))),
+                                fontSize: 16.sp,
+                                color: teal,
+                                fontWeight: FontWeight.w500))),
                   ],
                 ),
               ],
@@ -130,13 +139,22 @@ class MeteredWaste extends StatelessWidget {
           SizedBox(
             height: 30.h,
           ),
-          Center(
-            child: CustomCard(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: Text('Continue',
-                  style: TextStyle(color: kWhite, fontSize: 16.sp)),
-            )),
+          GestureDetector(
+            onTap: () {},
+            child: Center(
+              child: CustomCard(
+                  child: SizedBox(
+                width: Get.width * 0.5,
+                height: 30,
+                child: Center(
+                  child: Text('Continue',
+                      style: TextStyle(
+                          color: kWhite,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.sp)),
+                ),
+              )),
+            ),
           )
         ],
       ),

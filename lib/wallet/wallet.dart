@@ -10,51 +10,91 @@ class WalletScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w),
-      child: Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(4, 105, 85, 1),
+        automaticallyImplyLeading: false,
+        leading: const Icon(
+          Icons.arrow_back,
+          size: 18,
+        ),
+        centerTitle: true,
+        title: const Text('Wallet',
+            style: TextStyle(
+              color: Color.fromRGBO(122, 215, 181, 1),
+            )),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+      ),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: 20.h,
           ),
-          _walletCard(),
-          Text(
-            'Service',
-            style: TextStyle(fontSize: 18.sp),
-          ),
-          ListTile(
-            leading: CustomCard(
-              color: lightTeal,
-              child: SvgPicture.asset('assets/icon/game-icons_card-pickup.svg'),
-            ),
-            title: Text(
-              'Pickup',
-              style: TextStyle(color: teal, fontSize: 16.sp),
-            ),
-            trailing: CustomCard(
-                color: const Color(0xff64C1AB),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: const Text(
-                    'Instant Pickup',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w500,
-                      color: teal,
-                    ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              children: [
+                _walletCard(),
+                SizedBox(
+                  height: 20.h,
+                ),
+                Text(
+                  'Service',
+                  style: TextStyle(fontSize: 18.sp),
+                ),
+                SizedBox(
+                  height: 15.h,
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: CustomCard(
+                    color: lightTeal,
+                    child: SvgPicture.asset(
+                        'assets/icon/game-icons_card-pickup.svg'),
                   ),
-                )),
+                  title: Text(
+                    'Pickup',
+                    style: TextStyle(color: teal, fontSize: 16.sp),
+                  ),
+                  trailing: CustomCard(
+                      color: const Color(0xff64C1AB),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        child: const Text(
+                          'Instant Pickup',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            color: teal,
+                          ),
+                        ),
+                      )),
+                ),
+              ],
+            ),
           ),
           const Divider(
             thickness: 10,
             color: Color.fromRGBO(144, 238, 215, 0.29),
           ),
-          SizedBox(height: 15.h),
-          _sectionTitle(),
-          SizedBox(
-            height: 15.h,
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            child: Column(
+              children: [
+                SizedBox(height: 15.h),
+                _sectionTitle(),
+                SizedBox(
+                  height: 15.h,
+                ),
+                _walletTile(),
+              ],
+            ),
           ),
-          _sectionTitle(),
         ],
       ),
     );
@@ -103,49 +143,87 @@ class WalletScreen extends StatelessWidget {
       );
 
   Widget _walletCard() => CustomCard(
-          child: Container(
+      radius: 20,
+      color: const Color.fromRGBO(4, 105, 85, 1),
+      child: Container(
         margin: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
         width: Get.width,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text('Wallet Balance',
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
+                      color: lightTeal,
                     )),
                 Row(
                   children: [
                     Text('N 5,200',
                         style: TextStyle(
                           fontSize: 20.sp,
+                          color: lightTeal,
                           fontWeight: FontWeight.w500,
                         )),
                     SizedBox(
-                      width: 12.w,
+                      width: 5.w,
                     ),
                     IconButton(
                         onPressed: () {},
-                        icon: const Icon(Icons.remove_red_eye_outlined))
+                        icon: const Icon(
+                          Icons.remove_red_eye_outlined,
+                          size: 15,
+                          color: lightTeal,
+                        ))
                   ],
                 ),
                 CustomCard(
+                    color: const Color.fromRGBO(100, 193, 171, 1),
                     child: Row(
-                  children: [
-                    const Icon(
-                      Icons.add,
-                    ),
-                    Text(
-                      'Add funds',
-                      style: TextStyle(fontSize: 16.sp),
-                    )
-                  ],
-                ))
+                      children: [
+                        const Icon(
+                          Icons.add,
+                          color: Color.fromRGBO(34, 133, 113, 1),
+                          size: 16,
+                        ),
+                        Text(
+                          'Add funds',
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Colors.black,
+                          ),
+                        )
+                      ],
+                    ))
               ],
             ),
-            Image.asset('assets/image/animation_500_l9cj8g3w.gif'),
+            Image.asset('assets/image/animation_500_l9cj8g3w.gif',
+                height: 100.h),
           ],
         ),
       ));
+}
+
+class CustomAppBar extends StatelessWidget {
+  const CustomAppBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          color: Color.fromRGBO(4, 105, 85, 1),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(7),
+            bottomRight: Radius.circular(7),
+          )),
+      child: const ListTile(
+          leading: CustomCard(
+        child: Icon(Icons.arrow_back),
+      )),
+    );
+  }
 }
