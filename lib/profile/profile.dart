@@ -1,8 +1,11 @@
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
+import 'package:doti_app/settings/settings.dart';
+import 'package:doti_app/wallet/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key}) : super(key: key);
@@ -47,13 +50,19 @@ class Profile extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     profileCard(
-                        icon: 'assets/icon/support.svg', title: 'Support'),
+                        press: () {},
+                        icon: 'assets/icon/support.svg',
+                        title: 'Support'),
                     SizedBox(width: 25.w),
                     profileCard(
-                        icon: 'assets/icon/wallet.svg', title: 'Wallet'),
+                        press: () => Get.to(() => const WalletScreen()),
+                        icon: 'assets/icon/wallet.svg',
+                        title: 'Wallet'),
                     SizedBox(width: 25.w),
                     profileCard(
-                        icon: 'assets/icon/settings.svg', title: 'Settings'),
+                        press: () => Get.to(() => const Settings()),
+                        icon: 'assets/icon/settings.svg',
+                        title: 'Settings'),
                   ],
                 ),
                 SizedBox(height: 20.h),
@@ -89,8 +98,9 @@ class Profile extends StatelessWidget {
                     icon: 'assets/icon/bxs_notification.svg',
                     title: 'Notification'),
                 titleCard(
-                    icon: 'assets/icon/flat-color-icons_about.svg',
-                    title: 'About'),
+                  icon: 'assets/icon/flat-color-icons_about.svg',
+                  title: 'About',
+                ),
                 titleCard(
                     icon: 'assets/icon/bi_exclamation-circle-fill.svg',
                     title: 'Legal'),
@@ -125,21 +135,26 @@ class Profile extends StatelessWidget {
         ),
       );
 
-  Widget profileCard({required String icon, title}) => Expanded(
-        child: SizedBox(
-          height: 65.h,
-          child: CustomCard(
-            color: lightTeal,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(icon),
-                SizedBox(height: 5.h),
-                Text(
-                  title,
-                  style: TextStyle(color: teal, fontSize: 14.sp),
-                )
-              ],
+  Widget profileCard(
+          {required String icon, title, required GestureTapCallback press}) =>
+      Expanded(
+        child: GestureDetector(
+          onTap: press,
+          child: SizedBox(
+            height: 65.h,
+            child: CustomCard(
+              color: lightTeal,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(icon),
+                  SizedBox(height: 5.h),
+                  Text(
+                    title,
+                    style: TextStyle(color: teal, fontSize: 14.sp),
+                  )
+                ],
+              ),
             ),
           ),
         ),

@@ -10,21 +10,47 @@ class Subscriptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(4, 105, 85, 1),
+        automaticallyImplyLeading: false,
+        leading: const Icon(
+          Icons.arrow_back,
+          size: 18,
+        ),
+        centerTitle: true,
+        title: const Text('Subscriptions',
+            style: TextStyle(
+              color: Color.fromRGBO(122, 215, 181, 1),
+            )),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SingleChildScrollView(
           child: Column(
             children: [
+              SizedBox(
+                height: 20.h,
+              ),
               Text(
-                'Choose A Plan  that\nsuit you',
+                'Choose A Plan that\nsuit you',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: teal, fontSize: 16.sp, fontWeight: FontWeight.w500),
+                    color: const Color.fromRGBO(1, 55, 43, 1),
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w500),
               ),
               SizedBox(
-                height: 7.h,
+                height: 10.h,
               ),
               const Text(
                 'We set out with a single mission,to create the easiest disposal service for our clients',
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Color.fromRGBO(1, 55, 43, 1)),
               ),
               SizedBox(
@@ -62,6 +88,7 @@ class Subscriptions extends StatelessWidget {
               fontSize: 13.sp,
             ),
           ),
+          const Divider(),
           Center(
             child: Text(
               'N5,000',
@@ -76,11 +103,17 @@ class Subscriptions extends StatelessWidget {
           ),
           const Center(
             child: CustomCard(
-                child: Text(
-              'Start weekly plan',
-              style: TextStyle(color: kWhite),
+                child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: Text(
+                'Start weekly plan',
+                style: TextStyle(color: kWhite),
+              ),
             )),
-          )
+          ),
+          SizedBox(
+            height: 7.h,
+          ),
         ],
       ));
 }

@@ -1,6 +1,7 @@
-import 'package:doti_app/wallet/wallet.dart';
+import 'package:doti_app/subscriptions/subscriptions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Doti-Doti',
           // You can use the library anywhere in the app even in theme
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const WalletScreen(),
+      child: const Subscriptions(),
     );
   }
 }
