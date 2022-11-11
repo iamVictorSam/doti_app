@@ -17,6 +17,8 @@ const headStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const kAnimationDuration = Duration(milliseconds: 200);
+
 final kGreenLight = const Color(0xFF009933).withOpacity(0.5);
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,

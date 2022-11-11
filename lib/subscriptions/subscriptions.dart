@@ -57,6 +57,14 @@ class Subscriptions extends StatelessWidget {
                 height: 20.h,
               ),
               _subCard(),
+              SizedBox(
+                height: 20.h,
+              ),
+              _subCard(),
+              SizedBox(
+                height: 20.h,
+              ),
+              _subCard(),
             ],
           ),
         ),
@@ -66,9 +74,18 @@ class Subscriptions extends StatelessWidget {
 
   Widget _subCard() => Container(
       decoration: BoxDecoration(
-          color: const Color.fromRGBO(226, 251, 245, 0.37),
-          border: Border.all(color: const Color.fromRGBO(0, 68, 53, 0.18)),
-          borderRadius: BorderRadius.circular(10)),
+        color: const Color.fromRGBO(226, 251, 245, 0.37),
+        border: Border.all(color: const Color.fromRGBO(0, 68, 53, 0.18)),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 5,
+            spreadRadius: 5,
+            offset: Offset(0, 0.75),
+          )
+        ],
+      ),
       padding: const EdgeInsets.all(10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

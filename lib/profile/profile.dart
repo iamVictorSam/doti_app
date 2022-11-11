@@ -1,6 +1,8 @@
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
+import 'package:doti_app/pickup_history/pickup_history.dart';
 import 'package:doti_app/settings/settings.dart';
+import 'package:doti_app/subscriptions/subscriptions.dart';
 import 'package:doti_app/wallet/wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,7 +24,7 @@ class Profile extends StatelessWidget {
               children: [
                 SizedBox(height: 30.h),
                 GestureDetector(
-                    onTap: () {},
+                    onTap: () => Get.back(),
                     child: const CustomCard(
                         child: Icon(Icons.arrow_back, color: kWhite))),
                 SizedBox(height: 15.h),
@@ -89,22 +91,28 @@ class Profile extends StatelessWidget {
                   )),
                 ),
                 titleCard(
+                    press: () => Get.to(() => const PickupHistory()),
                     icon: 'assets/icon/ic_baseline-history-edu.svg',
                     title: 'Pickup History'),
                 titleCard(
+                    press: () => Get.to(() => const Subscriptions()),
                     icon: 'assets/icon/eos-icons_subscriptions-created.svg',
                     title: 'Subscriptions'),
                 titleCard(
+                    press: () {},
                     icon: 'assets/icon/bxs_notification.svg',
                     title: 'Notification'),
                 titleCard(
+                  press: () {},
                   icon: 'assets/icon/flat-color-icons_about.svg',
                   title: 'About',
                 ),
                 titleCard(
+                    press: () {},
                     icon: 'assets/icon/bi_exclamation-circle-fill.svg',
                     title: 'Legal'),
                 titleCard(
+                    press: () {},
                     icon: 'assets/icon/mdi_logout-variant.svg',
                     title: 'Logout'),
               ],
@@ -115,9 +123,12 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Widget titleCard({required String icon, title}) => Padding(
+  Widget titleCard(
+          {required String icon, title, required GestureTapCallback press}) =>
+      Padding(
         padding: EdgeInsets.only(bottom: 10.h),
         child: ListTile(
+          onTap: press,
           tileColor: const Color.fromARGB(26, 144, 238, 215),
           leading: CustomCard(
             child: SvgPicture.asset(icon),

@@ -113,7 +113,7 @@ class WalletScreen extends StatelessWidget {
               fontSize: 12.sp, color: const Color.fromRGBO(0, 0, 0, 1)),
         ),
         trailing: Text(
-          'Pickeup Finished',
+          'Pickup Finished',
           style: TextStyle(
               fontSize: 13.sp, color: const Color.fromRGBO(24, 128, 109, 1)),
         ),
