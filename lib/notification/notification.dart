@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class Notification extends StatelessWidget {
-  const Notification({Key? key}) : super(key: key);
+class NotificationScreen extends StatelessWidget {
+  const NotificationScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Notification extends StatelessWidget {
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               SizedBox(height: 10.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                     onTap: () => Get.back(),
@@ -34,14 +34,16 @@ class Notification extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Text('Notification',
+                  Text('Notification',
                       style: TextStyle(
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w500,
-                        color: Color.fromRGBO(0, 0, 0, 0.29),
+                        color: const Color.fromRGBO(0, 0, 0, 0.29),
                       )),
-                  const Text('Mark As Read',
+                  Text('Mark As Read',
                       style: TextStyle(
                         color: teal,
+                        fontSize: 18.sp,
                       )),
                 ],
               ),
@@ -104,11 +106,12 @@ class NotificationCard extends StatelessWidget {
                   SizedBox(
                     width: 15.w,
                   ),
-                  const Icon(Icons.circle, size: 15)
+                  const Icon(Icons.circle, size: 7, color: teal)
                 ],
               )
             ],
           ),
+          SizedBox(height: 10.h),
           const Text(
             'Lorem ipsum dolor sit amet, consectetur adipiscingelit. Risus tempor, velit mattis et mauris vel. Nec risus, ipsum scelerisque dui dictum.',
             style: TextStyle(

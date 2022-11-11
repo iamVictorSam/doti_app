@@ -1,5 +1,6 @@
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
+import 'package:doti_app/notification/notification.dart';
 import 'package:doti_app/pickup_history/pickup_history.dart';
 import 'package:doti_app/settings/settings.dart';
 import 'package:doti_app/subscriptions/subscriptions.dart';
@@ -99,7 +100,7 @@ class Profile extends StatelessWidget {
                     icon: 'assets/icon/eos-icons_subscriptions-created.svg',
                     title: 'Subscriptions'),
                 titleCard(
-                    press: () {},
+                    press: () => Get.to(() => const NotificationScreen()),
                     icon: 'assets/icon/bxs_notification.svg',
                     title: 'Notification'),
                 titleCard(
