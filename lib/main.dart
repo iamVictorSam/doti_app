@@ -1,4 +1,4 @@
-import 'package:doti_app/map/map.dart';
+import 'package:doti_app/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           home: child,
         );
       },
-      child: const MapScreen(),
+      child: const OnboardingScreen(),
     );
   }
 }

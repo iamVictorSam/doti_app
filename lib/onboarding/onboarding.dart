@@ -22,7 +22,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       "title":
           'Doti Doti is here to fight against\nurban waste crisis and eliminate\nthe environment hazard',
       "text":
-          "Get an overview of how you are performing\nand motivate yourself to achieve even more.",
+          "Get an overview of how you are performing and motivate yourself to achieve even more.",
     },
     {
       "image": "assets/image/ezgif-2-15d078752b.gif",
@@ -36,7 +36,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       "title":
           'Doti Doti is here to fight against\nurban waste crisis and eliminate\nthe environment hazard',
       "text":
-          "Get an overview of how you are performing\nand motivate yourself to achieve even more.",
+          "Get an overview of how you are performing and motivate yourself to achieve even more.",
     },
   ];
 
@@ -45,7 +45,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     keepPage: true,
   );
 
-// #DEBF8D
+// #
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               Positioned(
                 bottom: 150.h,
+                right: 0,
+                left: 0,
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
                   children: List.generate(
                     splashData.length,
@@ -80,31 +84,29 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
               ),
               Positioned(
-                bottom: 50.h,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      // const Spacer(),
-                      GestureDetector(
-                        onTap: () {
-                          Get.offAll(() => const MapScreen());
-                        },
-                        child: Text(
-                          'Skip',
-                          style: TextStyle(color: kWhite, fontSize: 17.sp),
-                        ),
-                      ),
-
-                      const CustomCard(
-                          color: Color.fromRGBO(65, 58, 0, 1),
-                          padding: 10,
-                          child: Text('Recycle Now',
-                              style: TextStyle(
-                                  color: kWhite, fontWeight: FontWeight.w500))),
-                    ],
+                bottom: 60.h,
+                left: 20.w,
+                child: GestureDetector(
+                  onTap: () {
+                    Get.offAll(() => const MapScreen());
+                  },
+                  child: Text(
+                    'Skip',
+                    style: TextStyle(color: kWhite, fontSize: 17.sp),
                   ),
+                ),
+              ),
+              Positioned(
+                bottom: 50.h,
+                right: 20.w,
+                child: GestureDetector(
+                  onTap: () => Get.offAll(() => const MapScreen()),
+                  child: const CustomCard(
+                      color: Color.fromRGBO(65, 58, 0, 1),
+                      padding: 13,
+                      child: Text('Recycle Now',
+                          style: TextStyle(
+                              color: kWhite, fontWeight: FontWeight.w500))),
                 ),
               ),
             ],
@@ -119,11 +121,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return AnimatedContainer(
       duration: kAnimationDuration,
       margin: const EdgeInsets.only(right: 5),
-      height: 6,
-      width: currentPage == index ? 35 : 6,
+      height: 8,
+      width: 8,
       decoration: BoxDecoration(
-        color: currentPage == index ? color : const Color(0xFFD8D8D8),
-        borderRadius: BorderRadius.circular(3),
+        color: currentPage == index
+            ? color
+            : const Color(0xFFD8D8D8).withOpacity(0.3),
+        borderRadius: BorderRadius.circular(10),
       ),
     );
   }

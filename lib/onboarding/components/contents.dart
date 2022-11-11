@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../helper/constants.dart';
-
 class OnboardingContent extends StatelessWidget {
   const OnboardingContent({
     Key? key,
@@ -16,51 +14,52 @@ class OnboardingContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        SizedBox(
-          height: 50.h,
-        ),
-        Center(
-          child: Image.asset(
-            image!,
-            height: Get.height,
-            // width: (300.w),
-            fit: BoxFit.cover,
+    return Container(
+      color: const Color(0xffDEBF8D),
+      child: Stack(
+        children: <Widget>[
+          Center(
+            child: Image.asset(
+              image!,
+              height: Get.height,
+
+              // width: (300.w),
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        Positioned(
-          left: 0,
-          right: 0,
-          top: 50.h,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/logo/Logo 01.png',
-                  height: 50,
-                ),
-                SizedBox(
-                  height: 60.h,
-                ),
-                Text(
-                  title!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 23.sp,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600,
+          Positioned(
+            left: 0,
+            right: 0,
+            top: 50.h,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 50.h,
                   ),
-                ),
-                SizedBox(
-                  height: 15.h,
-                ),
-                SizedBox(
-                  width: Get.width * 0.65,
-                  child: Text(
+                  Image.asset(
+                    'assets/logo/Logo 01.png',
+                    height: 80,
+                  ),
+                  SizedBox(
+                    height: 80.h,
+                  ),
+                  Text(
+                    title!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 23.sp,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  Text(
                     text!,
                     textAlign: TextAlign.center,
                     style: TextStyle(
@@ -69,12 +68,17 @@ class OnboardingContent extends StatelessWidget {
                       color: const Color.fromRGBO(255, 244, 148, 1),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+          Container(
+            height: Get.height,
+            width: Get.width,
+            color: const Color(0xffDEBF8D).withOpacity(0.3),
+          ),
+        ],
+      ),
     );
   }
 }
