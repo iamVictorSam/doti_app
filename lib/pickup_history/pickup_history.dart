@@ -1,5 +1,6 @@
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
+import 'package:doti_app/pickup_details/pickup_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,7 +53,7 @@ class PickupHistory extends StatelessWidget {
                 SizedBox(
                   height: 20.h,
                 ),
-                _walletTile()
+                HistoryTile(press: () => Get.to(() => PickupDetails()))
               ],
             ),
           ),
@@ -60,41 +61,46 @@ class PickupHistory extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _walletTile() => Column(
+class HistoryTile extends StatelessWidget {
+  const HistoryTile({Key? key, required this.press}) : super(key: key);
+
+  final GestureTapCallback press;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: press,
+      contentPadding: EdgeInsets.zero,
+      leading: CustomCard(
+          color: lightTeal,
+          child: SvgPicture.asset(
+              'assets/icon/fluent-emoji-high-contrast_delivery-truck.svg')),
+      title: const Text('Alakahia, Port Harcourt'),
+      subtitle: Text(
+        '13:06 23.05.22',
+        style:
+            TextStyle(fontSize: 12.sp, color: const Color.fromRGBO(0, 0, 0, 1)),
+      ),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            leading: CustomCard(
-                color: lightTeal,
-                child: SvgPicture.asset(
-                    'assets/icon/fluent-emoji-high-contrast_delivery-truck.svg')),
-            title: const Text('Alakahia, Port Harcourt'),
-            subtitle: Text(
-              '13:06 23.05.22',
-              style: TextStyle(
-                  fontSize: 12.sp, color: const Color.fromRGBO(0, 0, 0, 1)),
-            ),
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Pickup Finished',
-                  style: TextStyle(
-                      fontSize: 13.sp,
-                      color: const Color.fromRGBO(24, 128, 109, 1)),
-                ),
-                const Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  size: 15,
-                ),
-                const Divider(
-                  height: 0,
-                )
-              ],
-            ),
+          Text(
+            'Pickup Finished',
+            style: TextStyle(
+                fontSize: 13.sp, color: const Color.fromRGBO(24, 128, 109, 1)),
           ),
+          const Icon(
+            Icons.arrow_forward_ios_rounded,
+            size: 15,
+          ),
+          const Divider(
+            height: 0,
+          )
         ],
-      );
+      ),
+    );
+  }
 }

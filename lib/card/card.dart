@@ -1,3 +1,4 @@
+import 'package:doti_app/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,14 +17,30 @@ class CardHistory extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(
+                  height: 10.h,
+                ),
+                const CustomCard(
+                    child: Icon(
+                  Icons.arrow_back,
+                  color: kWhite,
+                )),
+                SizedBox(
+                  height: 20.h,
+                ),
                 const CardTile(),
                 SizedBox(
                   height: 25.h,
                 ),
+                const CardTile(),
                 SizedBox(
-                  width: Get.width,
-                )
+                  height: 25.h,
+                ),
+                _addCardBtn(
+                  press: () {},
+                ),
               ],
             ),
           ),
@@ -31,6 +48,23 @@ class CardHistory extends StatelessWidget {
       ),
     );
   }
+
+  Widget _addCardBtn({required GestureTapCallback press}) => GestureDetector(
+        onTap: press,
+        child: Center(
+          child: SizedBox(
+            width: Get.width * 0.75,
+            height: 40.h,
+            child: CustomCard(
+                child: Center(
+              child: Text(
+                'Add New Card',
+                style: TextStyle(color: kWhite, fontSize: 16.sp),
+              ),
+            )),
+          ),
+        ),
+      );
 }
 
 class CardTile extends StatelessWidget {
@@ -47,9 +81,12 @@ class CardTile extends StatelessWidget {
         ),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SvgPicture.asset('assets/icon/Payment.svg'),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'Visa ending in 1234',
@@ -59,6 +96,7 @@ class CardTile extends StatelessWidget {
                     ),
                     fontSize: 16.sp),
               ),
+              SizedBox(height: 5.h),
               Text(
                 'Expiry 06/2024',
                 style: TextStyle(
@@ -67,7 +105,7 @@ class CardTile extends StatelessWidget {
                     ),
                     fontSize: 16.sp),
               ),
-              SizedBox(height: 5.h),
+              SizedBox(height: 10.h),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
