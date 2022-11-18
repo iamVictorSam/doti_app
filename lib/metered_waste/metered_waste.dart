@@ -1,12 +1,20 @@
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
+import 'package:doti_app/successScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class MeteredWaste extends StatelessWidget {
+class MeteredWaste extends StatefulWidget {
   const MeteredWaste({Key? key}) : super(key: key);
+
+  @override
+  State<MeteredWaste> createState() => _MeteredWasteState();
+}
+
+class _MeteredWasteState extends State<MeteredWaste> {
+  bool _visible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +158,13 @@ class MeteredWaste extends StatelessWidget {
               height: 10.h,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                if (_visible == false) {
+                  setState(() => _visible = true);
+                } else {
+                  Get.to(() => const SuccessScreen());
+                }
+              },
               child: Center(
                 child: CustomCard(
                     child: SizedBox(
@@ -175,117 +189,131 @@ class MeteredWaste extends StatelessWidget {
     );
   }
 
-  Widget _payment() => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          children: [
-            const Text(
-              'Payment method',
-              style: TextStyle(color: teal),
-            ),
-            SizedBox(
-              height: 5.h,
-            ),
-            BorderBox(
-              color: const Color.fromRGBO(238, 255, 251, 1),
-              child: ListTile(
-                  leading: SvgPicture.asset('assets/icon/pay_wallet.svg'),
-                  title: const Text(
-                    'Pay with wallet',
-                    style: TextStyle(color: teal),
-                  ),
-                  trailing: Radio(
-                    activeColor: teal,
-                    groupValue: true,
-                    value: true,
-                    onChanged: (value) {},
-                  )),
-            ),
-            SizedBox(
-              height: 10.h,
-            ),
-            BorderBox(
-              color: const Color.fromRGBO(238, 255, 251, 1),
-              child: ListTile(
-                  leading: SvgPicture.asset('assets/icon/pay_card.svg'),
-                  title: const Text(
-                    'Pay with Card',
-                    style: TextStyle(color: teal),
-                  ),
-                  trailing: Radio(
-                    activeColor: teal,
-                    groupValue: true,
-                    value: true,
-                    onChanged: (value) {},
-                  )),
-            ),
-          ],
+  Widget _payment() => Visibility(
+        visible: _visible,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            children: [
+              const Text(
+                'Payment method',
+                style: TextStyle(color: teal),
+              ),
+              SizedBox(
+                height: 5.h,
+              ),
+              BorderBox(
+                color: const Color.fromRGBO(238, 255, 251, 1),
+                child: ListTile(
+                    leading: SvgPicture.asset('assets/icon/pay_wallet.svg'),
+                    title: const Text(
+                      'Pay with wallet',
+                      style: TextStyle(color: teal),
+                    ),
+                    trailing: Radio(
+                      activeColor: teal,
+                      groupValue: true,
+                      value: true,
+                      onChanged: (value) {},
+                    )),
+              ),
+              SizedBox(
+                height: 10.h,
+              ),
+              BorderBox(
+                color: const Color.fromRGBO(238, 255, 251, 1),
+                child: ListTile(
+                    leading: SvgPicture.asset('assets/icon/pay_card.svg'),
+                    title: const Text(
+                      'Pay with Card',
+                      style: TextStyle(color: teal),
+                    ),
+                    trailing: Radio(
+                      activeColor: teal,
+                      groupValue: true,
+                      value: true,
+                      onChanged: (value) {},
+                    )),
+              ),
+            ],
+          ),
         ),
       );
 
-  Widget _truckDetails() => Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Lookman waste Deposit',
-              style: TextStyle(
-                color: teal,
-              ),
-            ),
-            Text(
-              'Honda vx truck wonder',
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18.sp,
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    BorderBox(
-                      color: const Color.fromRGBO(0, 68, 53, 0.58),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Text('999-232-3323',
-                            style: TextStyle(
-                                fontSize: 18.sp, fontWeight: FontWeight.w500)),
-                      ),
-                    ),
-                    SizedBox(width: 6.w),
-                    BorderBox(
-                      color: const Color.fromRGBO(0, 68, 53, 0.58),
-                      child: SvgPicture.asset('assets/icon/copy.svg'),
-                    ),
-                    SizedBox(width: 6.w),
-                    SizedBox(
-                      height: 35.h,
-                      width: 35.h,
-                      child: BorderBox(
-                        color: const Color.fromRGBO(0, 68, 53, 0.58),
-                        child: SvgPicture.asset('assets/icon/phone.svg'),
-                      ),
-                    ),
-                    SizedBox(width: 16.w),
-                  ],
+  Widget _truckDetails() => Visibility(
+        visible: _visible,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Lookman waste Deposit',
+                style: TextStyle(
+                  color: teal,
                 ),
-                BorderBox(
-                  color: const Color(0xff18806D),
-                  child: Image.asset(
-                    'assets/image/imgI.png',
-                    height: 30.h,
-                    width: 30,
+              ),
+              Text(
+                'Honda vx truck wonder',
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18.sp,
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        height: 35.h,
+                        child: BorderBox(
+                          color: const Color.fromRGBO(0, 68, 53, 0.58),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text('999-232-3323',
+                                style: TextStyle(
+                                    fontSize: 18.sp,
+                                    fontWeight: FontWeight.w500)),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10.w),
+                      SizedBox(
+                        height: 35.h,
+                        width: 35.h,
+                        child: BorderBox(
+                          color: const Color.fromRGBO(0, 68, 53, 0.58),
+                          child: SvgPicture.asset('assets/icon/copy.svg'),
+                        ),
+                      ),
+                      SizedBox(width: 10.w),
+                      SizedBox(
+                        height: 35.h,
+                        width: 35.h,
+                        child: BorderBox(
+                          color: const Color.fromRGBO(0, 68, 53, 0.58),
+                          child: SvgPicture.asset('assets/icon/phone.svg'),
+                        ),
+                      ),
+                      SizedBox(width: 16.w),
+                    ],
                   ),
-                ),
-              ],
-            )
-          ],
+                  BorderBox(
+                    color: const Color(0xff18806D),
+                    child: Image.asset(
+                      'assets/image/imgI.png',
+                      height: 30.h,
+                      width: 30,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       );
 }

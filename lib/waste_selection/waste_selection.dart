@@ -1,5 +1,6 @@
 import 'package:doti_app/home/home.dart';
 import 'package:doti_app/metered_waste/metered_waste.dart';
+import 'package:doti_app/unmetered_waste/unmetered_waste.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -42,6 +43,7 @@ class WasteSelection extends StatelessWidget {
               CustomCard(
                   color: const Color.fromRGBO(0, 68, 53, 1),
                   child: ListTile(
+                    onTap: () => Get.to(() => const UnmeteredWasteScreen()),
                     leading: CustomCard(
                         padding: 5,
                         color: const Color.fromRGBO(0, 175, 132, 1),
