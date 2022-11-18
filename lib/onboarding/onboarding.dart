@@ -1,4 +1,5 @@
 import 'package:doti_app/home/home.dart';
+import 'package:doti_app/login/login.dart';
 import 'package:doti_app/map/map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -100,7 +101,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 bottom: 50.h,
                 right: 20.w,
                 child: GestureDetector(
-                  onTap: () => Get.offAll(() => const MapScreen()),
+                  onTap: () => Get.offAll(() => const LoginScreen()),
                   child: const CustomCard(
                       color: Color.fromRGBO(65, 58, 0, 1),
                       padding: 13,

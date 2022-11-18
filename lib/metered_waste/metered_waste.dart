@@ -77,6 +77,10 @@ class MeteredWaste extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
+          _truckDetails(),
+          SizedBox(
+            height: 10.h,
+          ),
           const Divider(
             thickness: 10,
             color: Color.fromARGB(98, 0, 68, 53),
@@ -140,6 +144,10 @@ class MeteredWaste extends StatelessWidget {
           SizedBox(
             height: 30.h,
           ),
+          _payment(),
+          SizedBox(
+            height: 10.h,
+          ),
           GestureDetector(
             onTap: () {},
             child: Center(
@@ -162,6 +170,49 @@ class MeteredWaste extends StatelessWidget {
     );
   }
 
+  Widget _payment() => Column(
+        children: [
+          const Text(
+            'Payment method',
+            style: TextStyle(color: teal),
+          ),
+          SizedBox(
+            height: 5.h,
+          ),
+          BorderBox(
+            color: const Color.fromRGBO(0, 68, 53, 0.75),
+            child: ListTile(
+                leading: SvgPicture.asset('assets/icon/pay_wallet.svg'),
+                title: const Text(
+                  'Pay with wallet',
+                  style: TextStyle(color: teal),
+                ),
+                trailing: Radio(
+                  groupValue: true,
+                  value: true,
+                  onChanged: (value) {},
+                )),
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
+          BorderBox(
+            color: const Color.fromRGBO(0, 68, 53, 0.75),
+            child: ListTile(
+                leading: SvgPicture.asset('assets/icon/pay_card.svg'),
+                title: const Text(
+                  'Pay with Card',
+                  style: TextStyle(color: teal),
+                ),
+                trailing: Radio(
+                  groupValue: true,
+                  value: true,
+                  onChanged: (value) {},
+                )),
+          ),
+        ],
+      );
+
   Widget _truckDetails() => Column(
         children: [
           const Text(
@@ -180,15 +231,26 @@ class MeteredWaste extends StatelessWidget {
           Row(
             children: [
               BorderBox(
+                color: const Color.fromRGBO(0, 68, 53, 0.58),
                 child: Text('999-232-3323',
                     style: TextStyle(
                         fontSize: 18.sp, fontWeight: FontWeight.w500)),
               ),
               SizedBox(width: 6.w),
-              BorderBox(child: SvgPicture.asset('assets/icon/copy.svg')),
+              BorderBox(
+                color: const Color.fromRGBO(0, 68, 53, 0.58),
+                child: SvgPicture.asset('assets/icon/copy.svg'),
+              ),
               SizedBox(width: 6.w),
-              BorderBox(child: SvgPicture.asset('assets/icon/phone.svg')),
-              SizedBox(width: 6.w),
+              BorderBox(
+                color: const Color.fromRGBO(0, 68, 53, 0.58),
+                child: SvgPicture.asset('assets/icon/phone.svg'),
+              ),
+              SizedBox(width: 16.w),
+              BorderBox(
+                color: teal,
+                child: SvgPicture.asset('assets/image/imgl.png'),
+              ),
             ],
           )
         ],
@@ -196,9 +258,11 @@ class MeteredWaste extends StatelessWidget {
 }
 
 class BorderBox extends StatelessWidget {
-  const BorderBox({Key? key, required this.child}) : super(key: key);
+  const BorderBox({Key? key, required this.child, required this.color})
+      : super(key: key);
 
   final Widget child;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -206,8 +270,8 @@ class BorderBox extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(color: const Color.fromRGBO(0, 0, 0, 0.27)),
           borderRadius: BorderRadius.circular(7),
-          color: const Color.fromRGBO(0, 68, 53, 0.58)),
-      padding: const EdgeInsets.all(14),
+          color: color),
+      padding: const EdgeInsets.all(4),
       child: child,
     );
   }
