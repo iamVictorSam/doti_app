@@ -2,6 +2,7 @@ import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class MeteredWaste extends StatelessWidget {
@@ -158,6 +159,56 @@ class MeteredWaste extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget _truckDetails() => Column(
+        children: [
+          const Text(
+            'Lookman waste Deposit',
+            style: TextStyle(
+              color: teal,
+            ),
+          ),
+          Text(
+            'Honda vx truck wonder',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 18.sp,
+            ),
+          ),
+          Row(
+            children: [
+              BorderBox(
+                child: Text('999-232-3323',
+                    style: TextStyle(
+                        fontSize: 18.sp, fontWeight: FontWeight.w500)),
+              ),
+              SizedBox(width: 6.w),
+              BorderBox(child: SvgPicture.asset('assets/icon/copy.svg')),
+              SizedBox(width: 6.w),
+              BorderBox(child: SvgPicture.asset('assets/icon/phone.svg')),
+              SizedBox(width: 6.w),
+            ],
+          )
+        ],
+      );
+}
+
+class BorderBox extends StatelessWidget {
+  const BorderBox({Key? key, required this.child}) : super(key: key);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(color: const Color.fromRGBO(0, 0, 0, 0.27)),
+          borderRadius: BorderRadius.circular(7),
+          color: const Color.fromRGBO(0, 68, 53, 0.58)),
+      padding: const EdgeInsets.all(14),
+      child: child,
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:doti_app/card/card.dart';
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
 import 'package:flutter/material.dart';
@@ -181,24 +182,27 @@ class WalletScreen extends StatelessWidget {
                         ))
                   ],
                 ),
-                CustomCard(
-                    color: const Color.fromRGBO(100, 193, 171, 1),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.add,
-                          color: Color.fromRGBO(34, 133, 113, 1),
-                          size: 16,
-                        ),
-                        Text(
-                          'Add funds',
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            color: Colors.black,
+                GestureDetector(
+                  onTap: (() => Get.to(const CardHistory())),
+                  child: CustomCard(
+                      color: const Color.fromRGBO(100, 193, 171, 1),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.add,
+                            color: Color.fromRGBO(34, 133, 113, 1),
+                            size: 16,
                           ),
-                        )
-                      ],
-                    ))
+                          Text(
+                            'Add funds',
+                            style: TextStyle(
+                              fontSize: 14.sp,
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
+                      )),
+                )
               ],
             ),
             Image.asset('assets/image/animation_500_l9cj8g3w.gif',

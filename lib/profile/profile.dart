@@ -1,6 +1,7 @@
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
 import 'package:doti_app/notification/notification.dart';
+import 'package:doti_app/onboarding/onboarding.dart';
 import 'package:doti_app/pickup_history/pickup_history.dart';
 import 'package:doti_app/settings/settings.dart';
 import 'package:doti_app/subscriptions/subscriptions.dart';
@@ -113,7 +114,7 @@ class Profile extends StatelessWidget {
                     icon: 'assets/icon/bi_exclamation-circle-fill.svg',
                     title: 'Legal'),
                 titleCard(
-                    press: () {},
+                    press: () => Get.offAll(const OnboardingScreen()),
                     icon: 'assets/icon/mdi_logout-variant.svg',
                     title: 'Logout'),
               ],
