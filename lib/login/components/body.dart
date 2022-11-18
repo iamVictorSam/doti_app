@@ -5,8 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../helper/default_btn.dart';
-import '../../helper/horizontal_line.dart';
-import '../../signup/components/body.dart';
 import 'form.dart';
 
 class LoginBody extends StatelessWidget {
@@ -30,22 +28,7 @@ class LoginBody extends StatelessWidget {
                 press: () => Get.offAll(() => const MapScreen()),
               ),
               SizedBox(height: 30.h),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    HorizontalLine(),
-                    Text('  OR LOGIN WITH  ',
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w600)),
-                    HorizontalLine(),
-                  ],
-                ),
-              ),
               SizedBox(height: 30.h),
-              const SignUpWith(),
             ],
           ),
         ),

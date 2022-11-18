@@ -43,8 +43,6 @@ class SignUpBody extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 30.h),
-              const SignUpWith(),
-              SizedBox(height: 30.h),
               RichText(
                 text: TextSpan(
                   text: 'By clicking sign up I agree with ',

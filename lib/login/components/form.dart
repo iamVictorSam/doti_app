@@ -24,6 +24,15 @@ class LoginForm extends StatelessWidget {
             decoration: InputDecoration(
               labelText: 'Email',
               hintText: 'autupsyofjanedoe@gmail.com',
+              border: const OutlineInputBorder(
+                borderSide: BorderSide(color: kGrey),
+              ),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: kGrey),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                borderSide: BorderSide(color: teal),
+              ),
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: SvgPicture.asset(
@@ -41,6 +50,15 @@ class LoginForm extends StatelessWidget {
             decoration: const InputDecoration(
               labelText: 'Password',
               hintText: '* * * * * *',
+              border: OutlineInputBorder(
+                borderSide: BorderSide(color: kGrey),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: kGrey),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(color: teal),
+              ),
               prefixIcon: Padding(
                 padding: EdgeInsets.all(15.0),
                 child: Icon(
