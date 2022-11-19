@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:doti_app/helper/constants.dart';
 import 'package:doti_app/home/home.dart';
 import 'package:flutter/material.dart';
@@ -5,8 +6,22 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-class UnmeteredWasteScreen extends StatelessWidget {
+import '../waste_capture/capture.dart';
+
+class UnmeteredWasteScreen extends StatefulWidget {
   const UnmeteredWasteScreen({Key? key}) : super(key: key);
+
+  @override
+  State<UnmeteredWasteScreen> createState() => _UnmeteredWasteScreenState();
+}
+
+class _UnmeteredWasteScreenState extends State<UnmeteredWasteScreen> {
+  late List<CameraDescription> _cameras;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +33,9 @@ class UnmeteredWasteScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
+                SizedBox(
+                  height: 10.h,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -25,7 +43,7 @@ class UnmeteredWasteScreen extends StatelessWidget {
                       onTap: () => Get.back(),
                       child: const CustomCard(
                         color: kWhite,
-                        child: Icon(Icons.arrow_back),
+                        child: Icon(Icons.arrow_back, size: 16),
                       ),
                     ),
                     Container(
@@ -43,14 +61,16 @@ class UnmeteredWasteScreen extends StatelessWidget {
                       ),
                     ),
                     CircleAvatar(
+                      radius: 17,
                       backgroundColor:
                           const Color.fromRGBO(255, 255, 255, 0.54),
-                      child: SvgPicture.asset('assets/icon/bolt.svg'),
+                      child:
+                          SvgPicture.asset('assets/icon/bolt.svg', height: 17),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 30.h,
+                  height: 20.h,
                 ),
                 Container(
                   decoration: BoxDecoration(
@@ -62,7 +82,22 @@ class UnmeteredWasteScreen extends StatelessWidget {
                           fit: BoxFit.cover)),
                   height: Get.height * 0.7,
                 ),
-                SvgPicture.asset('assets/icon/capture.svg'),
+                GestureDetector(
+                  onTap: () async {
+                    await availableCameras().then(
+                      (value) => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CamCapture(cameras: value),
+                        ),
+                      ),
+                    );
+                  },
+                  child: SvgPicture.asset(
+                    'assets/icon/capture.svg',
+                    // height: 15,
+                  ),
+                ),
               ],
             ),
           ),
